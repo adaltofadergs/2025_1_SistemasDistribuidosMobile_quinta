@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula01</title>
+</head>
+<body>
+
+    <h1>Olá Pessoal</h1>
+    <h3 id="texto"></h3>
+    <button onclick="darBomDia()">Dar Bom Dia</button>
+
+    <hr>
+
+    <input type="text" id="txtValor" />
+    <button onclick="gerar()">Gerar</button>
+    <div id="divValores"></div>
+
+    <script>
+
+        function gerar(){
+            var valor = document.getElementById("txtValor").value;
+            if( isNaN( valor ) ){
+                alert( "O campo valor só pode receber números");
+            }else if( valor <= 0 ){
+                alert( "O campo valor só pode receber números positivos");
+            }else{
+                var numeros = "";
+                for( i = 1; i <= valor; i++){
+                    numeros += i + "<br>"; 
+                }
+                var minhaDiv = document.getElementById("divValores");
+                minhaDiv.innerHTML = numeros;
+                minhaDiv.style.background = "#f00"
+                minhaDiv.style.width = "50%";
+                minhaDiv.style.margin = "20px";
+                minhaDiv.style.padding = "10px";
+            }
+        }
+
+        function darBomDia(){
+            document.getElementById("texto").innerHTML = " Bom dia <u>galerinha</u>";
+        }
+    </script>
+
+
+
+    
+</body>
+</html>
