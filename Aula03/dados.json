@@ -1,0 +1,13 @@
+{
+    "marca" : "Fiat" ,
+    "modelo" : "Pulse" ,
+    "ano" : 2024 ,
+    "motor" : 1.0 ,
+    "automatico" : true ,
+    "cor" : [ "cinza", "vermelho" ] ,
+    "opcionais" : [
+        { "nome" : "ACC" , "marca" : "ACC do João"} ,
+        { "nome" : "Piloto Automático" , "marca" : "Senna" }
+    ],
+    "placa" : null
+}
