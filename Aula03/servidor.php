@@ -26,3 +26,56 @@
             echo ' { "resposta" : "Erro no servidor"  } ';
         } 
     }
+
+
+    if( isset( $_REQUEST["inserir"] )){
+        try{
+            $conn = mysqli_connect($local, $user, $senha, $banco);
+            if( $conn ){
+
+                $nome = $_POST["name"];
+                $preco = $_POST["price"];
+
+                $query = "INSERT INTO produto ( nome , preco ) VALUES ( '$nome' , $preco ) ";
+
+                mysqli_query( $conn , $query );
+                $id = mysqli_insert_id( $conn );
+                
+                mysqli_close( $conn );
+
+                echo ' { "id" : '.$id.'  } ';
+
+            }else{
+                // Mensagem de erro
+                echo ' { "resposta" : "Erro ao conectar ao banco"  } ';
+            }
+        }catch( \Throwable $th){
+            // Mensagem de erro
+            echo ' { "resposta" : "Erro no servidor"  } ';
+        } 
+    }
+
+    if( isset( $_REQUEST["excluir"] )){
+        try{
+            $conn = mysqli_connect($local, $user, $senha, $banco);
+            if( $conn ){
+
+                $id = $_GET["id"];
+               
+                $query = "DELETE FROM produto WHERE  id = $id ";
+
+                mysqli_query( $conn , $query );
+                
+                mysqli_close( $conn );
+
+                echo ' { "resposta" : "Produto excluído com sucesso!"  } ';
+                
+            }else{
+                // Mensagem de erro
+                echo ' { "resposta" : "Erro ao conectar ao banco"  } ';
+            }
+        }catch( \Throwable $th){
+            // Mensagem de erro
+            echo ' { "resposta" : "Erro no servidor"  } ';
+        } 
+    }
